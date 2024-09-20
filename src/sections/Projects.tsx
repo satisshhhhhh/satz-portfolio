@@ -1,6 +1,7 @@
 // import TheWallsImage from "@/assets/images/TheWallsAllTime.jpg";
 import TheWallsImage from "@/assets/images/TheWallsImage.png";
 import FitnessFactoryImage from "@/assets/images/FitnessFactoryImage-1.png";
+import KeeperApp from "@/assets/images/KeeperApp.png";
 import CheckCircleIcon from "@/assets/icons/check-circle.svg";
 import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
 import grainImage from "@/assets/images/grain.jpg";
@@ -35,11 +36,34 @@ const portfolioProjects = [
         title:
           "Incorporated YouTube videos that demonstrate exercises and target specific muscle groups",
       },
-      { title: "A well-rounded solution that combines information, visualization, and user engagement." },
+      {
+        title:
+          "A well-rounded solution that combines information, visualization, and user engagement.",
+      },
     ],
     link: "https://github.com/satisshhhhhh/FitnessFactory",
     image: FitnessFactoryImage,
     tags: ["React", "Rapid API", "Material UI"],
+  },
+  {
+    title: "Keeper App",
+    results: [
+      {
+        title:
+          "Developed a clone of Google Keep, a note-taking app, using React JS",
+      },
+      {
+        title:
+          "A responsive and dynamic user interface that enhances the overall user experience",
+      },
+      {
+        title:
+          "A simple and efficient note-taking solution that helps users stay organized and keep track of their ideas and tasks..",
+      },
+    ],
+    link: "https://satisshhhhhh.github.io/keeper-app/",
+    image: KeeperApp,
+    tags: ["React", "HTML", "CSS"],
   },
 ];
 
