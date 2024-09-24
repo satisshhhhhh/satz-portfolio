@@ -17,3 +17,18 @@
     @apply lg:max-w-5xl;
   }
 }
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0); /* Start from the visible part of the screen */
+  }
+  100% {
+    transform: translateX(-100%); /* Move all the way to the left */
+  }
+}
+
+.animate-marquee {
+  display: inline-flex;
+  animation: marquee 30s linear infinite; /* Keep the animation duration */
+  animation-fill-mode: forwards; /* Maintain the position between cycles */
+}
