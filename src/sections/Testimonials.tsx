@@ -6,37 +6,30 @@ import memojiAvatar5 from "@/assets/images/memoji-avatar-5.png";
 
 const testimonials = [
   {
-    name: "Alex Turner",
-    position: "Marketing Manager @ TechStartups",
-    text: "Alex was instrumental in transforming our website into a powerful marketing tool. His attention to detail and ability to understand our brand is exceptional. We're thrilled with the results!",
+    name: "Vedant Shirole",
+    position: "Front End Developer",
+    text: "I've seen Satish juggling both tasks in hand, managing college as well as internship. He has always been a very good partner as well as an hardworker. Also very punctual.",
     avatar: memojiAvatar1,
   },
   {
-    name: "Olivia Green",
+    name: "Swaroop Rangale",
     position: "Head of Design @ GreenLeaf",
-    text: "Working with Alex was a pleasure. His expertise in frontend development brought our designs to life in a way we never imagined. The website has exceeded our expectations.",
+    text: "Satish is familiar with wide range of programming utilities and languages. He is a Skilled multitasker with superior work ethic and good teamwork, problem-solving and organizational skills. Willing to take on any task to help team. Reliable and dedicated team player with hardworking and resourceful approach.",
     avatar: memojiAvatar2,
-  },
-  {
-    name: "Daniel White",
-    position: "CEO @ InnovateCo",
-    text: "Alex's ability to create seamless user experiences is unmatched. Our website has seen a significant increase in conversions since launching the new design. We couldn't be happier.",
-    avatar: memojiAvatar3,
-  },
-  {
-    name: "Emily Carter",
-    position: "Product Manager @ GlobalTech",
-    text: "Alex is a true frontend wizard. He took our complex product and transformed it into an intuitive and engaging user interface. We're already seeing positive feedback from our customers.",
-    avatar: memojiAvatar4,
-  },
-  {
-    name: "Michael Brown",
-    position: "Director of IT @ MegaCorp",
-    text: "Alex's work on our website has been nothing short of exceptional. He's a talented developer who is also a great communicator. We highly recommend him.",
-    avatar: memojiAvatar5,
   },
 ];
 
 export const TestimonialsSection = () => {
-  return <div>Testimonials Section</div>;
+  return (
+    <div>
+      <p>Testimonials</p>
+      <div>
+        {testimonials.map(testimonial => (
+          <div key={testimonial.name}>
+            <p>{testimonial.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };
