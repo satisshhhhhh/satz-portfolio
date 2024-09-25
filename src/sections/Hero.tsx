@@ -1,4 +1,7 @@
 import memojiImage from "@/assets/images/memoji-computer.png";
+import SatishThumbsUp from "@/assets/images/Satish-Thumbs-Up.png";
+import Satz from "@/assets/images/Satz.png";
+import SatishWithMic from "@/assets/images/SatishWithMic.png";
 import ArrowDown from "@/assets/icons/arrow-down.svg";
 import Image from "next/image";
 import grainImage from "@/assets/images/grain.jpg";
@@ -38,7 +41,7 @@ export const HeroSection = () => {
       <div className="container">
         <div className="flex flex-col items-center">
           <Image
-            src={memojiImage}
+            src={SatishWithMic}
             className="size-[100px]"
             alt="person peeping"
           />
