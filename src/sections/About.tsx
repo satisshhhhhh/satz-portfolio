@@ -76,23 +76,25 @@ const animeImages = [
 ];
 
 const hobbies = [
-  { title: "Sketching", emoji: "🎨" },
-  { title: "Playing Chess", emoji: "♕" },
-  { title: "Photography", emoji: "📸" },
-  { title: "Creating Content", emoji: "📽️" },
-  { title: "Music", emoji: "🎧" },
+  { title: "Sketching", emoji: "🎨", left: "5%", top: "5%" },
+  { title: "Chess", emoji: "♟️", left: "50%", top: "5%" },
+  { title: "Photography", emoji: "📸", left: "10%", top: "35%" },
+  { title: "Creating Content", emoji: "📽️", left: "35%", top: "40%" },
+  { title: "Music", emoji: "🎧", left: "70%", top: "45%" },
+  { title: "Fitness", emoji: "🥋", left: "5%", top: "65%" },
+  { title: "Videography", emoji: "🎞️", left: "45%", top: "70%" },
 ];
 
 export const AboutSection = () => {
   return (
-    <div className="py-20">
+    <div className="py-20 lg:py-28">
       <div className="container">
         <SectionHeader
           eyebrow="About Me"
           title="A Glimpse Into My World"
           description="Learn more about who I am"
         />
-        <div className=" flex flex-col gap-8">
+        <div className="mt-20 flex flex-col gap-8">
           {/* <Card className="h-[320px]">
             <div className="flex flex-col">
               <div className="inline-flex items-center gap-2">
@@ -106,64 +108,89 @@ export const AboutSection = () => {
             </div>
           </Card> */}
           {/* My Recommendations Section */}
-          <Card>
-            <CardHeader
-              title="My Recommendations"
-              description="Explore My Tastebuds"
-            />
-            {/* Scrollable Anime Cards */}
-            <div className="overflow-x-auto flex space-x-4 mt-4">
-              {animeImages.map((anime) => (
-                <div key={anime.name} className="min-w-[150px]">
-                  <a
-                    href={anime.imdbUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-5">
+            <Card className="h-[320px] md:col-span-2">
+              <CardHeader
+                title="Recommendations"
+                description=""
+                className="mt-0"
+              />
+              {/* Scrollable Anime Cards */}
+              <div className="overflow-x-auto flex space-x-4">
+                {animeImages.map((anime) => (
+                  <div key={anime.name} className="min-w-[150px] mt-2">
+                    <a
+                      href={anime.imdbUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Image
+                        src={anime.src}
+                        alt={anime.name}
+                        // width={150}
+                        // height={200}
+                        className="rounded-lg"
+                      />
+                    </a>
+                    {/* <p className="text-center mt-2 text-white">{anime.name}</p> */}
+                  </div>
+                ))}
+              </div>
+            </Card>
+            <Card className="h-[320px] p-0 md:col-span-3 ">
+              <CardHeader
+                title="My ToolBox"
+                description="Explore the Technologies"
+                className="px-6 pt-6"
+              />
+              <ToolBoxItem items={toolboxItems} className="mt-6" />
+              <ToolBoxItem
+                items={toolboxItems}
+                className="mt-6"
+                itemsWrapperClassName="-translate-x-1/2"
+              />
+            </Card>
+          </div>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-5 lg:grid-cols-3">
+            <Card className="h-[320px] p-0 flex flex-col md:col-span-3 lg:col-span-2">
+              <CardHeader
+                title="Beyond the Code"
+                description="Explore my interests and hobbies"
+                className="px-6 py-6"
+              />
+              <div className="relative flex-1">
+                {hobbies.map((hobby) => (
+                  <div
+                    key={hobby.title}
+                    className="inline-flex items-center gap-2 px-6 bg-gradient-to-r from-emerald-300 to-sky-400 rounded-full py-1.5 absolute"
+                    style={{
+                      left: hobby.left,
+                      top: hobby.top,
+                    }}
                   >
-                    <Image
-                      src={anime.src}
-                      alt={anime.name}
-                      // width={150}
-                      // height={200}
-                      className="rounded-lg"
-                    />
-                  </a>
-                  {/* <p className="text-center mt-2 text-white">{anime.name}</p> */}
-                </div>
-              ))}
-            </div>
-          </Card>
-          <Card className="h-[320px] p-0">
-            <CardHeader
-              title="My ToolBox"
-              description="Explore the Technologies"
-              className="px-6 pt-6"
-            />
-            <ToolBoxItem items={toolboxItems} className="mt-6" />
-            <ToolBoxItem
-              items={toolboxItems}
-              className="mt-6"
-              itemsWrapperClassName="-translate-x-1/2"
-            />
-          </Card>
-          {/* <Card>
-            <CardHeader
-              title="Beyond the Code"
-              description="Explore my interests and hobbies"
-            />
-            <div>
-              {hobbies.map((hobby) => (
-                <div key={hobby.title}>
-                  <span>{hobby.title}</span>
-                  <span>{hobby.emoji}</span>
-                </div>
-              ))}
-            </div>
-          </Card> */}
-          {/* <Card>
-            <Image src={Mumbai} alt="Mumbai" />
-            <Image src={SatishThumbsUp} alt="smiling Satish" />
-          </Card> */}
+                    <span className="font-medium text-gray-950">
+                      {hobby.title}
+                    </span>
+                    <span>{hobby.emoji}</span>
+                  </div>
+                ))}
+              </div>
+            </Card>
+            <Card className="h-[320px] p-0  md:col-span-2 lg:col-span-1">
+              <Image
+                src={Mumbai}
+                alt="Mumbai"
+                className="h-full w-full object-cover"
+              />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mt-10 md:mt-14">
+                <Image
+                  src={SatishThumbsUp}
+                  alt="smiling Satish"
+                  className="size-20 rounded-full md:size-28"
+                />
+              </div>
+            </Card>
+          </div>
         </div>
       </div>
     </div>
