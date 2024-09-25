@@ -8,7 +8,7 @@ export const ToolBoxItem = ({
 }: {
   items: {
     title: string;
-    iconTypes: React.ElementType;
+    iconType: React.ElementType;
   }[];
   className?: string;
   itemsWrapperClassName?: string;
