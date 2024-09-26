@@ -15,7 +15,7 @@ export const ContactSection = () => {
           <div className="flex flex-col md:flex:row gap-2 items-center">
             <div>
               <h2 className="font-serif text-2xl md:text-3xl">
-                Let's create something together
+                {"Let\'s create something together"}
               </h2>
               <p className="text-sm mt-2 md:text-base">
                 Ready to bring your next project to life? Let's connect and
