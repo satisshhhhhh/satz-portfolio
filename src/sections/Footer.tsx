@@ -18,6 +18,7 @@ export const Footer = () => {
             {footerLinks.map((link) => (
               <a
                 href={link.href}
+                key={link.title}
                 target="_blank"
                 className="inline-flex items-center gal-1.5"
               >
