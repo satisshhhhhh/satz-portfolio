@@ -1,3 +1,4 @@
+'use client';
 import { Card } from "@/components/Card";
 import { SectionHeader } from "@/components/SectionHeader";
 import StarcIcon from "@/assets/icons/star.svg";
@@ -9,7 +10,6 @@ import CssIcon from "@/assets/icons/css3.svg";
 import ReactIcon from "@/assets/icons/react.svg";
 import GithubIcon from "@/assets/icons/github.svg";
 import NextJSIcon from "@/assets/icons/nextjs.svg";
-import { TechIcon } from "@/components/TechIcon";
 import Mumbai from "@/assets/images/Mumbai.jpg";
 import SatishThumbsUp from "@/assets/images/Satish-Thumbs-Up.png";
 import Naruto from "@/assets/animes/Naruto.jpg";
@@ -22,6 +22,8 @@ import YourName from "@/assets/animes/Your Name.jpg";
 import JJK from "@/assets/animes/JJK.jpg";
 import { CardHeader } from "@/components/CardHeader";
 import { ToolBoxItem } from "@/components/ToolBoxItem";
+import { motion } from 'framer-motion';
+import { useRef } from "react";
 
 const toolboxItems = [
   { title: "HTML5", iconType: HTMLIcon },
@@ -86,8 +88,9 @@ const hobbies = [
 ];
 
 export const AboutSection = () => {
+  const constraintRef = useRef(null);
   return (
-    <div className="py-20 lg:py-28">
+    <section className="py-20 lg:py-28" id="about">
       <div className="container">
         <SectionHeader
           eyebrow="About Me"
@@ -109,7 +112,7 @@ export const AboutSection = () => {
           </Card> */}
           {/* My Recommendations Section */}
           <div className="grid grid-cols-1 gap-8 md:grid-cols-5">
-            <Card className="h-[320px] md:col-span-2">
+            <Card className="h-[320px] md:col-span-2 ">
               <CardHeader
                 title="Recommendations"
                 description=""
@@ -129,7 +132,7 @@ export const AboutSection = () => {
                         alt={anime.name}
                         // width={150}
                         // height={200}
-                        className="rounded-lg"
+                        className="rounded-lg hover:scale-110  transition duration-200"
                       />
                     </a>
                     {/* <p className="text-center mt-2 text-white">{anime.name}</p> */}
@@ -143,11 +146,15 @@ export const AboutSection = () => {
                 description="Explore the Technologies"
                 className="px-6 pt-6"
               />
-              <ToolBoxItem items={toolboxItems} className="mt-6" />
               <ToolBoxItem
                 items={toolboxItems}
                 className="mt-6"
-                itemsWrapperClassName="-translate-x-1/2"
+                itemsWrapperClassName="animate-marquee"
+              />
+              <ToolBoxItem
+                items={toolboxItems}
+                className="mt-6"
+                itemsWrapperClassName="animate-marquee-rev"
               />
             </Card>
           </div>
@@ -158,21 +165,23 @@ export const AboutSection = () => {
                 description="Explore my interests and hobbies"
                 className="px-6 py-6"
               />
-              <div className="relative flex-1">
+              <div className="relative flex-1" ref={constraintRef}>
                 {hobbies.map((hobby) => (
-                  <div
+                  <motion.div 
                     key={hobby.title}
                     className="inline-flex items-center gap-2 px-6 bg-gradient-to-r from-emerald-300 to-sky-400 rounded-full py-1.5 absolute"
                     style={{
                       left: hobby.left,
                       top: hobby.top,
                     }}
+                    drag
+                    dragConstraints={constraintRef}
                   >
                     <span className="font-medium text-gray-950">
                       {hobby.title}
                     </span>
                     <span>{hobby.emoji}</span>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </Card>
@@ -193,6 +202,6 @@ export const AboutSection = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
