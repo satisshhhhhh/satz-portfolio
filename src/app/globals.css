@@ -18,6 +18,10 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 @keyframes marquee {
   0% {
     transform: translateX(0); /* Start from the visible part of the screen */
@@ -31,4 +35,19 @@
   display: inline-flex;
   animation: marquee 30s linear infinite; /* Keep the animation duration */
   animation-fill-mode: forwards; /* Maintain the position between cycles */
+}
+
+@keyframes marquee-rev {
+  0% {
+    transform: translateX(-100%); 
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee-rev {
+  display: inline-flex;
+  animation: marquee-rev 20s linear infinite; 
+  animation-fill-mode: forwards; 
 }

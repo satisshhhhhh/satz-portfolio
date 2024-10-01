@@ -1,3 +1,5 @@
+'use client';
+import { useState } from "react";
 import memojiImage from "@/assets/images/memoji-computer.png";
 import SatishThumbsUp from "@/assets/images/Satish-Thumbs-Up.png";
 import Satz from "@/assets/images/Satz.png";
@@ -9,8 +11,19 @@ import StarIcon from "@/assets/icons/star.svg";
 import { HeroOrbit } from "@/components/HeroOrbit";
 
 export const HeroSection = () => {
+  const [hovered, setHovered] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText(email).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000); // Reset copied state after 2 seconds
+    });
+  };
+
+  const email = "satishpanchal651@gmail.com";
   return (
-    <div className="py-32 md:py-48 lg:py-60 relative z-0 overflow-x-clip">
+    <section className="py-32 md:py-48 lg:py-60 relative z-0 overflow-x-clip" id="home">
       <div className="absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_70%,transparent)] -z-10">
         <div
           className="absolute inset-0 -z-30 opacity-10"
@@ -46,7 +59,9 @@ export const HeroSection = () => {
             alt="person peeping"
           />
           <div className="bg-gray-950 border border-gray-800 px-4 py-1.5 inline-flex items-center gap-4 rounded-lg">
-            <div className="bg-green-500 size-2.5 rounded-full"></div>
+            <div className="bg-green-500 size-2.5 rounded-full relative">
+              <div className="bg-green-500 size-2.5 rounded-full absolute inset-0 animate-ping-large"></div>
+            </div>
             <div className="text-sm font-medium">
               Available for new projects
             </div>
@@ -65,15 +80,22 @@ export const HeroSection = () => {
         </div>
         <div className="flex flex-col md:flex-row justify-center items-center mt-8 gap-4">
           <button className="inline-flex items-center gap-2 border border-white/15 px-6 h-12 rounded-xl">
-            <span className="font-semibold">Explore My Work</span>
+            <a href="#projects" className="font-semibold">Explore My Work</a>
             <ArrowDown className="size-4" />
           </button>
-          <button className="inline-flex items-center gap-2 border border-white bg-white text-gray-900 h-12 px-6 rounded-xl">
+          <button
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+            onClick={handleCopyEmail}
+            className="inline-flex items-center gap-2 border border-white bg-white text-gray-900 h-12 px-6 rounded-xl relative"
+          >
             <span>👋</span>
-            <span className="font-semiboild">{"Let's Connect"}</span>
+            <span className="font-semibold">
+              {hovered ? "Click to Copy Mail To Clipboard 📋" : copied ? "✅ Mail Copied!" : "Let's Connect"}
+            </span>
           </button>
         </div>
       </div>
-    </div>
+    </section>
   );
 };

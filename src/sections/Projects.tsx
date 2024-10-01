@@ -6,6 +6,7 @@ import CheckCircleIcon from "@/assets/icons/check-circle.svg";
 import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
 import grainImage from "@/assets/images/grain.jpg";
 import Image from "next/image";
+import { Card } from "@/components/Card";
 
 const portfolioProjects = [
   {
@@ -69,7 +70,7 @@ const portfolioProjects = [
 
 export const ProjectsSection = () => {
   return (
-    <section className="pb-16 lg:py-24">
+    <section className="pb-16 lg:py-24" id="projects">
       <div className="container">
         <div className="flex justify-center">
           <p className="uppercase font-semibold tracking-widest bg-gradient-to-r from-emerald-300 to-sky-400 text-transparent bg-clip-text">
@@ -83,10 +84,13 @@ export const ProjectsSection = () => {
           See how I transformed concepts into engaging visual experiences.
         </p>
         <div className="flex flex-col mt-10 md:mt-20 gap-20">
-          {portfolioProjects.map((project) => (
-            <div
+          {portfolioProjects.map((project, projectIndex) => (
+            <Card
               key={project.title}
-              className="px-8 pt-5 md:pt-12 md:px-10 lg:pt-16 lg:px-20 bg-gray-800 rounded-3xl relative z-0 overflow-hidden after:-z-10 after:content-[''] after:absolute after:inset-0 after:outline-2 after:outline after:-outline-offset-2 after:rounded-3xl after:outline-white/20"
+              className="px-8 pt-5 md:pt-12 md:px-10 lg:pt-16 lg:px-20 sticky top-16"
+              style ={{
+                top: `calc(64px + ${projectIndex * 50}px )`
+              }}
             >
               <div
                 className="absolute inset-0 -z-10 opacity-5"
@@ -129,10 +133,10 @@ export const ProjectsSection = () => {
                   </li>
                 ))}
               </ul> */}
-                  <ul className="flex flex-wrap mt-4 gap-2 mt-5">
+                  <ul className="flex flex-wrap gap-2 mt-5">
                     {project.tags.map((tag, index) => (
                       <li
-                        className="bg-emerald-300 px-3 py-1 text-[0.7rem] uppercase tracking-wider text-black rounded-full dark:text-black/80 dark:shadow-[3px_3px_0px_rgba(255,255,255,1)] dark:shadow-[2px_2px_0px_rgba(0,0,0,1)]"
+                        className="bg-emerald-300 px-3 py-1 text-[0.7rem] uppercase tracking-wider text-black rounded-full dark:text-black/80 dark:shadow-[3px_3px_0px_rgba(255,255,255,1)]"
                         key={index}
                       >
                         {tag}
@@ -145,11 +149,11 @@ export const ProjectsSection = () => {
                   <Image
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-auto object-cover rounded-lg shadow-lg lg:absolute lg:h-full lg:w-auto"
+                    className="w-full h-auto object-cover rounded-lg shadow-lg lg:absolute lg:h-full lg:w-auto hover:-rotate-3 transition duration-200"
                   />
                 </div>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
       </div>
