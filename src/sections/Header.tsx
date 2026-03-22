@@ -2,13 +2,14 @@
 
 import React, { useState, useEffect } from 'react';
 
+const NAV_SECTIONS = ['home', 'projects', 'experience', 'about', 'contact'] as const;
+
 export const Header = () => {
   const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'projects', 'about', 'contact'];
-      const currentSection = sections.find(section => {
+      const currentSection = [...NAV_SECTIONS].reverse().find(section => {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
@@ -22,14 +23,14 @@ export const Header = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <div className="flex justify-center items-center sticky top-3 w-full z-10">
       <nav className="flex gap-1 p-0.5 border border-white/15 rounded-full bg-white/10 backdrop-blur">
-        {['home', 'projects', 'about', 'contact'].map((section) => (
+        {NAV_SECTIONS.map((section) => (
           <a
             key={section}
             href={`#${section}`}
@@ -37,9 +38,9 @@ export const Header = () => {
               activeSection === section
                 ? 'bg-white text-gray-900'
                 : 'text-white hover:bg-white/10'
-            }`}
-          >
-            {section.charAt(0).toUpperCase() + section.slice(1)}
+              }`}
+            >
+              {section.charAt(0).toUpperCase() + section.slice(1)}
           </a>
         ))}
       </nav>
