@@ -4,7 +4,6 @@ const footerLinks = [
   { title: "LinkedIn", href: "https://www.linkedin.com/in/satisshhhhhh/" },
   { title: "GitHub", href: "https://www.github.com/satisshhhhhh/" },
   { title: "Instagram", href: "https://www.instagram.com/satisshhhhhh/" },
-  { title: "Instagram", href: "https://www.instagram.com/satisshhhhhh/" },
   { title: "Resume", href: "https://drive.google.com/file/d/1wRWNRJPVKfvGG2VmnXUkRekpETZa02oY/view?usp=sharing" },
 ];
 
